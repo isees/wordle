@@ -1,6 +1,7 @@
 import { KeyValue } from "../../lib/keyboard";
 import { getStatuses } from "../../lib/statuses";
 import { Key } from "./Key";
+import { useEffect } from "react";
 
 type Props = {
   onChar: (value: string) => void;
@@ -22,6 +23,22 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
     }
     return onChar(value);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const key = e.key.toUpperCase()
+      if (key === 'ENTER') {
+        onEnter()
+      } else if (key === 'BACKSPACE') {
+        onDelete()
+      } else if (/^[A-Z]$/.test(key)) {
+        onChar(key)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [onChar, onDelete, onEnter])
 
   return (
     <div>
