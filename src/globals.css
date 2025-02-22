@@ -1,0 +1,33 @@
+/* 确保Autocomplete的弹出层在正确层级 */
+.autocomplete-wrapper {
+  position: relative;
+  z-index: 10;
+}
+
+/* 调整GuessGrid的层级 */
+.guess-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.autocomplete-section {
+  position: relative;
+  z-index: 50; /* 确保弹出层在最前 */
+  margin-bottom: 2rem;
+}
+
+.guessgrid-section {
+  position: relative;
+  z-index: 10;
+}
+
+.main-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.autocomplete-container {
+  position: relative;
+  z-index: 50;
+} 

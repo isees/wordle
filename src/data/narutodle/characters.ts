@@ -1,7 +1,7 @@
-const db = [
+const characters = [
   {
-    championId: 0,
-    championName: "Minato Namikaze",
+    playerId: 0,
+    playerName: "Minato Namikaze",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -35,8 +35,8 @@ const db = [
     ],
   },
   {
-    championId: 1,
-    championName: "Itachi Uchiha",
+    playerId: 1,
+    playerName: "Itachi Uchiha",
     gender: "Male",
     affiliations: [
       "Konoha",
@@ -75,8 +75,8 @@ const db = [
     ],
   },
   {
-    championId: 2,
-    championName: "Naruto Uzumaki",
+    playerId: 2,
+    playerName: "Naruto Uzumaki",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -119,8 +119,8 @@ const db = [
     ],
   },
   {
-    championId: 3,
-    championName: "Kakashi Hatake",
+    playerId: 3,
+    playerName: "Kakashi Hatake",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -160,8 +160,8 @@ const db = [
     ],
   },
   {
-    championId: 4,
-    championName: "Sakura Haruno",
+    playerId: 4,
+    playerName: "Sakura Haruno",
     gender: "Female",
     affiliations: [
       "Konoha"
@@ -195,8 +195,8 @@ const db = [
     ],
   },
   {
-    championId: 5,
-    championName: "Shisui Uchiha",
+    playerId: 5,
+    playerName: "Shisui Uchiha",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -234,8 +234,8 @@ const db = [
     ],
   },
   {
-    championId: 6,
-    championName: "Sakumo Hatake",
+    playerId: 6,
+    playerName: "Sakumo Hatake",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -266,8 +266,8 @@ const db = [
     ],
   },
   {
-    championId: 7,
-    championName: "Madara Uchiha",
+    playerId: 7,
+    playerName: "Madara Uchiha",
     gender: "Male",
     affiliations: [
       "Konoha",
@@ -320,8 +320,8 @@ const db = [
     ],
   },
   {
-    championId: 8,
-    championName: "Obito Uchiha",
+    playerId: 8,
+    playerName: "Obito Uchiha",
     gender: "Male",
     affiliations: [
       "Konoha",
@@ -371,8 +371,8 @@ const db = [
     ],
   },
   {
-    championId: 9,
-    championName: "Hinata Hyuga",
+    playerId: 9,
+    playerName: "Hinata Hyuga",
     gender: "Female",
     affiliations: [
       "Konoha"
@@ -405,8 +405,8 @@ const db = [
     ],
   },
   {
-    championId: 10,
-    championName: "Jiraiya",
+    playerId: 10,
+    playerName: "Jiraiya",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -440,8 +440,8 @@ const db = [
     ],
   },
   {
-    championId: 11,
-    championName: "Sasuke Uchiha",
+    playerId: 11,
+    playerName: "Sasuke Uchiha",
     gender: "Male",
     affiliations: [
       "Konoha",
@@ -486,8 +486,8 @@ const db = [
     ],
   },
   {
-    championId: 12,
-    championName: "Shikamaru Nara",
+    playerId: 12,
+    playerName: "Shikamaru Nara",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -519,8 +519,8 @@ const db = [
     ],
   },
   {
-    championId: 13,
-    championName: "Neji Hyuga",
+    playerId: 13,
+    playerName: "Neji Hyuga",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -554,8 +554,8 @@ const db = [
     ],
   },
   {
-    championId: 14,
-    championName: "Tobirama Senju",
+    playerId: 14,
+    playerName: "Tobirama Senju",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -592,8 +592,8 @@ const db = [
     ],
   },
   {
-    championId: 15,
-    championName: "Hashirama Senju",
+    playerId: 15,
+    playerName: "Hashirama Senju",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -630,8 +630,8 @@ const db = [
     ],
   },
   {
-    championId: 16,
-    championName: "Deidara",
+    playerId: 16,
+    playerName: "Deidara",
     gender: "Male",
     affiliations: [
       "Iwa",
@@ -665,8 +665,8 @@ const db = [
     ],
   },
   {
-    championId: 17,
-    championName: "Gaara",
+    playerId: 17,
+    playerName: "Gaara",
     gender: "Male",
     affiliations: [
       "Suna"
@@ -700,8 +700,8 @@ const db = [
     ],
   },
   {
-    championId: 18,
-    championName: "Sasori",
+    playerId: 18,
+    playerName: "Sasori",
     gender: "Male",
     affiliations: [
       "Suna",
@@ -733,8 +733,8 @@ const db = [
     ],
   },
   {
-    championId: 19,
-    championName: "Might Guy",
+    playerId: 19,
+    playerName: "Might Guy",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -767,8 +767,8 @@ const db = [
     ],
   },
   {
-    championId: 20,
-    championName: "Hidan",
+    playerId: 20,
+    playerName: "Hidan",
     gender: "Male",
     affiliations: [
       "Yu",
@@ -800,8 +800,8 @@ const db = [
     ],
   },
   {
-    championId: 21,
-    championName: "Rock Lee",
+    playerId: 21,
+    playerName: "Rock Lee",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -832,8 +832,8 @@ const db = [
     ],
   },
   {
-    championId: 22,
-    championName: "Kushina Uzumaki",
+    playerId: 22,
+    playerName: "Kushina Uzumaki",
     gender: "Female",
     affiliations: [
       "Uzushio",
@@ -866,8 +866,8 @@ const db = [
     ],
   },
   {
-    championId: 23,
-    championName: "Orochimaru",
+    playerId: 23,
+    playerName: "Orochimaru",
     gender: "Male",
     affiliations: [
       "Konoha",
@@ -916,8 +916,8 @@ const db = [
     ],
   },
   {
-    championId: 24,
-    championName: "Kurama",
+    playerId: 24,
+    playerName: "Kurama",
     gender: "Other",
     affiliations: [
       "Konoha"
@@ -950,8 +950,8 @@ const db = [
     ],
   },
   {
-    championId: 25,
-    championName: "Zabuza Momochi",
+    playerId: 25,
+    playerName: "Zabuza Momochi",
     gender: "Male",
     affiliations: [
       "Kiri"
@@ -984,8 +984,8 @@ const db = [
     ],
   },
   {
-    championId: 26,
-    championName: "Nagato",
+    playerId: 26,
+    playerName: "Nagato",
     gender: "Male",
     affiliations: [
       "Ame",
@@ -1021,8 +1021,8 @@ const db = [
     ],
   },
   {
-    championId: 27,
-    championName: "Kaguya Otsutsuki",
+    playerId: 27,
+    playerName: "Kaguya Otsutsuki",
     gender: "Female",
     affiliations: [
       "None"
@@ -1060,8 +1060,8 @@ const db = [
     ],
   },
   {
-    championId: 28,
-    championName: "Iruka Umino",
+    playerId: 28,
+    playerName: "Iruka Umino",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -1094,8 +1094,8 @@ const db = [
     ],
   },
   {
-    championId: 29,
-    championName: "Fugaku Uchiha",
+    playerId: 29,
+    playerName: "Fugaku Uchiha",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -1130,8 +1130,8 @@ const db = [
     ],
   },
   {
-    championId: 30,
-    championName: "Tsunade",
+    playerId: 30,
+    playerName: "Tsunade",
     gender: "Female",
     affiliations: [
       "Konoha"
@@ -1167,8 +1167,8 @@ const db = [
     ],
   },
   {
-    championId: 31,
-    championName: "Haku",
+    playerId: 31,
+    playerName: "Haku",
     gender: "Male",
     affiliations: [
       "Kiri"
@@ -1201,8 +1201,8 @@ const db = [
     ],
   },
   {
-    championId: 32,
-    championName: "Tenten",
+    playerId: 32,
+    playerName: "Tenten",
     gender: "Female",
     affiliations: [
       "Konoha"
@@ -1234,8 +1234,8 @@ const db = [
     ],
   },
   {
-    championId: 33,
-    championName: "Mito Uzumaki",
+    playerId: 33,
+    playerName: "Mito Uzumaki",
     gender: "Female",
     affiliations: [
       "Uzushio",
@@ -1267,8 +1267,8 @@ const db = [
     ],
   },
   {
-    championId: 34,
-    championName: "Yamato",
+    playerId: 34,
+    playerName: "Yamato",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -1301,8 +1301,8 @@ const db = [
     ],
   },
   {
-    championId: 35,
-    championName: "Kisame Hoshigaki",
+    playerId: 35,
+    playerName: "Kisame Hoshigaki",
     gender: "Male",
     affiliations: [
       "Kiri",
@@ -1338,8 +1338,8 @@ const db = [
     ],
   },
   {
-    championId: 36,
-    championName: "Teuchi",
+    playerId: 36,
+    playerName: "Teuchi",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -1370,8 +1370,8 @@ const db = [
     ],
   },
   {
-    championId: 37,
-    championName: "Konan",
+    playerId: 37,
+    playerName: "Konan",
     gender: "Female",
     affiliations: [
       "Ame",
@@ -1405,8 +1405,8 @@ const db = [
     ],
   },
   {
-    championId: 38,
-    championName: "Temari",
+    playerId: 38,
+    playerName: "Temari",
     gender: "Female",
     affiliations: [
       "Suna"
@@ -1438,8 +1438,8 @@ const db = [
     ],
   },
   {
-    championId: 39,
-    championName: "Sai",
+    playerId: 39,
+    playerName: "Sai",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -1473,8 +1473,8 @@ const db = [
     ],
   },
   {
-    championId: 40,
-    championName: "Killer B",
+    playerId: 40,
+    playerName: "Killer B",
     gender: "Male",
     affiliations: [
       "Kumo"
@@ -1508,8 +1508,8 @@ const db = [
     ],
   },
   {
-    championId: 41,
-    championName: "Indra Otsutsuki",
+    playerId: 41,
+    playerName: "Indra Otsutsuki",
     gender: "Male",
     affiliations: [
       "None"
@@ -1546,8 +1546,8 @@ const db = [
     ],
   },
   {
-    championId: 42,
-    championName: "Hiruzen Sarutobi",
+    playerId: 42,
+    playerName: "Hiruzen Sarutobi",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -1582,8 +1582,8 @@ const db = [
     ],
   },
   {
-    championId: 43,
-    championName: "Izuna Uchiha",
+    playerId: 43,
+    playerName: "Izuna Uchiha",
     gender: "Male",
     affiliations: [
       "None"
@@ -1618,8 +1618,8 @@ const db = [
     ],
   },
   {
-    championId: 44,
-    championName: "Rin Nohara",
+    playerId: 44,
+    playerName: "Rin Nohara",
     gender: "Female",
     affiliations: [
       "Konoha"
@@ -1652,8 +1652,8 @@ const db = [
     ],
   },
   {
-    championId: 45,
-    championName: "Kiba Inuzuka",
+    playerId: 45,
+    playerName: "Kiba Inuzuka",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -1685,8 +1685,8 @@ const db = [
     ],
   },
   {
-    championId: 46,
-    championName: "Kimimaro",
+    playerId: 46,
+    playerName: "Kimimaro",
     gender: "Male",
     affiliations: [
       "Oto"
@@ -1718,8 +1718,8 @@ const db = [
     ],
   },
   {
-    championId: 47,
-    championName: "Kakuzu",
+    playerId: 47,
+    playerName: "Kakuzu",
     gender: "Male",
     affiliations: [
       "Taki",
@@ -1756,8 +1756,8 @@ const db = [
     ],
   },
   {
-    championId: 48,
-    championName: "Might Duy",
+    playerId: 48,
+    playerName: "Might Duy",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -1788,8 +1788,8 @@ const db = [
     ],
   },
   {
-    championId: 49,
-    championName: "Ino Yamanaka",
+    playerId: 49,
+    playerName: "Ino Yamanaka",
     gender: "Female",
     affiliations: [
       "Konoha"
@@ -1822,8 +1822,8 @@ const db = [
     ],
   },
   {
-    championId: 50,
-    championName: "Kankuro",
+    playerId: 50,
+    playerName: "Kankuro",
     gender: "Male",
     affiliations: [
       "Suna"
@@ -1857,8 +1857,8 @@ const db = [
     ],
   },
   {
-    championId: 51,
-    championName: "Kabuto Yakushi",
+    playerId: 51,
+    playerName: "Kabuto Yakushi",
     gender: "Male",
     affiliations: [
       "Konoha",
@@ -1903,8 +1903,8 @@ const db = [
     ],
   },
   {
-    championId: 52,
-    championName: "Mei Terumi",
+    playerId: 52,
+    playerName: "Mei Terumi",
     gender: "Female",
     affiliations: [
       "Kiri"
@@ -1942,8 +1942,8 @@ const db = [
     ],
   },
   {
-    championId: 53,
-    championName: "Shino Aburame",
+    playerId: 53,
+    playerName: "Shino Aburame",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -1976,8 +1976,8 @@ const db = [
     ],
   },
   {
-    championId: 54,
-    championName: "Suigetsu Hozuki",
+    playerId: 54,
+    playerName: "Suigetsu Hozuki",
     gender: "Male",
     affiliations: [
       "Kiri",
@@ -2012,8 +2012,8 @@ const db = [
     ],
   },
   {
-    championId: 55,
-    championName: "Genma Shiranui",
+    playerId: 55,
+    playerName: "Genma Shiranui",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -2044,8 +2044,8 @@ const db = [
     ],
   },
   {
-    championId: 56,
-    championName: "Hagoromo Otsutsuki",
+    playerId: 56,
+    playerName: "Hagoromo Otsutsuki",
     gender: "Male",
     affiliations: [
       "None"
@@ -2084,8 +2084,8 @@ const db = [
     ],
   },
   {
-    championId: 57,
-    championName: "Asuma Sarutobi",
+    playerId: 57,
+    playerName: "Asuma Sarutobi",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -2118,8 +2118,8 @@ const db = [
     ],
   },
   {
-    championId: 58,
-    championName: "Tayuya",
+    playerId: 58,
+    playerName: "Tayuya",
     gender: "Female",
     affiliations: [
       "Oto"
@@ -2152,8 +2152,8 @@ const db = [
     ],
   },
   {
-    championId: 59,
-    championName: "Konohamaru Sarutobi",
+    playerId: 59,
+    playerName: "Konohamaru Sarutobi",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -2187,8 +2187,8 @@ const db = [
     ],
   },
   {
-    championId: 60,
-    championName: "Akamaru",
+    playerId: 60,
+    playerName: "Akamaru",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -2219,8 +2219,8 @@ const db = [
     ],
   },
   {
-    championId: 61,
-    championName: "Karin",
+    playerId: 61,
+    playerName: "Karin",
     gender: "Female",
     affiliations: [
       "Kusa",
@@ -2254,8 +2254,8 @@ const db = [
     ],
   },
   {
-    championId: 62,
-    championName: "Danzo Shimura",
+    playerId: 62,
+    playerName: "Danzo Shimura",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -2298,8 +2298,8 @@ const db = [
     ],
   },
   {
-    championId: 63,
-    championName: "Hayate Gekko",
+    playerId: 63,
+    playerName: "Hayate Gekko",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -2332,8 +2332,8 @@ const db = [
     ],
   },
   {
-    championId: 64,
-    championName: "Asura Otsutsuki",
+    playerId: 64,
+    playerName: "Asura Otsutsuki",
     gender: "Male",
     affiliations: [
       "None"
@@ -2369,8 +2369,8 @@ const db = [
     ],
   },
   {
-    championId: 65,
-    championName: "Utakata",
+    playerId: 65,
+    playerName: "Utakata",
     gender: "Male",
     affiliations: [
       "Kiri"
@@ -2402,8 +2402,8 @@ const db = [
     ],
   },
   {
-    championId: 66,
-    championName: "Yagura Karatachi",
+    playerId: 66,
+    playerName: "Yagura Karatachi",
     gender: "Male",
     affiliations: [
       "Kiri"
@@ -2435,8 +2435,8 @@ const db = [
     ],
   },
   {
-    championId: 67,
-    championName: "Samui",
+    playerId: 67,
+    playerName: "Samui",
     gender: "Female",
     affiliations: [
       "Kumo"
@@ -2467,8 +2467,8 @@ const db = [
     ],
   },
   {
-    championId: 68,
-    championName: "Black Zetsu",
+    playerId: 68,
+    playerName: "Black Zetsu",
     gender: "Other",
     affiliations: [
       "Akatsuki"
@@ -2513,8 +2513,8 @@ const db = [
     ],
   },
   {
-    championId: 69,
-    championName: "Darui",
+    playerId: 69,
+    playerName: "Darui",
     gender: "Male",
     affiliations: [
       "Kumo"
@@ -2548,8 +2548,8 @@ const db = [
     ],
   },
   {
-    championId: 70,
-    championName: "Yahiko",
+    playerId: 70,
+    playerName: "Yahiko",
     gender: "Male",
     affiliations: [
       "Ame",
@@ -2583,8 +2583,8 @@ const db = [
     ],
   },
   {
-    championId: 71,
-    championName: "Shikaku Nara",
+    playerId: 71,
+    playerName: "Shikaku Nara",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -2615,8 +2615,8 @@ const db = [
     ],
   },
   {
-    championId: 72,
-    championName: "Gamabunta",
+    playerId: 72,
+    playerName: "Gamabunta",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -2647,8 +2647,8 @@ const db = [
     ],
   },
   {
-    championId: 73,
-    championName: "Ten-Tails",
+    playerId: 73,
+    playerName: "Ten-Tails",
     gender: "Other",
     affiliations: [
       "None"
@@ -2683,8 +2683,8 @@ const db = [
     ],
   },
   {
-    championId: 74,
-    championName: "Chiyo",
+    playerId: 74,
+    playerName: "Chiyo",
     gender: "Female",
     affiliations: [
       "Suna"
@@ -2716,8 +2716,8 @@ const db = [
     ],
   },
   {
-    championId: 75,
-    championName: "Mikoto Uchiha",
+    playerId: 75,
+    playerName: "Mikoto Uchiha",
     gender: "Female",
     affiliations: [
       "Konoha"
@@ -2748,8 +2748,8 @@ const db = [
     ],
   },
   {
-    championId: 76,
-    championName: "Shizune",
+    playerId: 76,
+    playerName: "Shizune",
     gender: "Female",
     affiliations: [
       "Konoha"
@@ -2780,8 +2780,8 @@ const db = [
     ],
   },
   {
-    championId: 77,
-    championName: "Choji Akimichi",
+    playerId: 77,
+    playerName: "Choji Akimichi",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -2814,8 +2814,8 @@ const db = [
     ],
   },
   {
-    championId: 78,
-    championName: "Hanzo",
+    playerId: 78,
+    playerName: "Hanzo",
     gender: "Male",
     affiliations: [
       "Ame"
@@ -2846,8 +2846,8 @@ const db = [
     ],
   },
   {
-    championId: 79,
-    championName: "Pakkun",
+    playerId: 79,
+    playerName: "Pakkun",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -2878,8 +2878,8 @@ const db = [
     ],
   },
   {
-    championId: 80,
-    championName: "Omoi",
+    playerId: 80,
+    playerName: "Omoi",
     gender: "Male",
     affiliations: [
       "Kumo"
@@ -2910,8 +2910,8 @@ const db = [
     ],
   },
   {
-    championId: 81,
-    championName: "Gamatatsu",
+    playerId: 81,
+    playerName: "Gamatatsu",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -2942,8 +2942,8 @@ const db = [
     ],
   },
   {
-    championId: 82,
-    championName: "Chojuro",
+    playerId: 82,
+    playerName: "Chojuro",
     gender: "Male",
     affiliations: [
       "Kiri"
@@ -2974,8 +2974,8 @@ const db = [
     ],
   },
   {
-    championId: 83,
-    championName: "Gengetsu Hozuki",
+    playerId: 83,
+    playerName: "Gengetsu Hozuki",
     gender: "Male",
     affiliations: [
       "Kiri"
@@ -3011,8 +3011,8 @@ const db = [
     ],
   },
   {
-    championId: 84,
-    championName: "Yugito Nii",
+    playerId: 84,
+    playerName: "Yugito Nii",
     gender: "Female",
     affiliations: [
       "Kumo"
@@ -3044,8 +3044,8 @@ const db = [
     ],
   },
   {
-    championId: 85,
-    championName: "Mu",
+    playerId: 85,
+    playerName: "Mu",
     gender: "Male",
     affiliations: [
       "Iwa"
@@ -3080,8 +3080,8 @@ const db = [
     ],
   },
   {
-    championId: 86,
-    championName: "Karui",
+    playerId: 86,
+    playerName: "Karui",
     gender: "Female",
     affiliations: [
       "Kumo"
@@ -3112,8 +3112,8 @@ const db = [
     ],
   },
   {
-    championId: 87,
-    championName: "Baki",
+    playerId: 87,
+    playerName: "Baki",
     gender: "Male",
     affiliations: [
       "Suna"
@@ -3145,8 +3145,8 @@ const db = [
     ],
   },
   {
-    championId: 88,
-    championName: "Homura Mitokado",
+    playerId: 88,
+    playerName: "Homura Mitokado",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -3177,8 +3177,8 @@ const db = [
     ],
   },
   {
-    championId: 89,
-    championName: "Ebisu",
+    playerId: 89,
+    playerName: "Ebisu",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -3210,8 +3210,8 @@ const db = [
     ],
   },
   {
-    championId: 90,
-    championName: "Shima",
+    playerId: 90,
+    playerName: "Shima",
     gender: "Female",
     affiliations: [
       "Konoha"
@@ -3245,8 +3245,8 @@ const db = [
     ],
   },
   {
-    championId: 91,
-    championName: "Hiashi Hyuga",
+    playerId: 91,
+    playerName: "Hiashi Hyuga",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -3277,8 +3277,8 @@ const db = [
     ],
   },
   {
-    championId: 92,
-    championName: "Katsuyu",
+    playerId: 92,
+    playerName: "Katsuyu",
     gender: "Other",
     affiliations: [
       "Konoha"
@@ -3309,8 +3309,8 @@ const db = [
     ],
   },
   {
-    championId: 93,
-    championName: "Gamakichi",
+    playerId: 93,
+    playerName: "Gamakichi",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -3343,8 +3343,8 @@ const db = [
     ],
   },
   {
-    championId: 94,
-    championName: "Gyuki",
+    playerId: 94,
+    playerName: "Gyuki",
     gender: "Other",
     affiliations: [
       "Kumo"
@@ -3375,8 +3375,8 @@ const db = [
     ],
   },
   {
-    championId: 95,
-    championName: "Choza Akimichi",
+    playerId: 95,
+    playerName: "Choza Akimichi",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -3408,8 +3408,8 @@ const db = [
     ],
   },
   {
-    championId: 96,
-    championName: "Fukasaku",
+    playerId: 96,
+    playerName: "Fukasaku",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -3443,8 +3443,8 @@ const db = [
     ],
   },
   {
-    championId: 97,
-    championName: "Ao",
+    playerId: 97,
+    playerName: "Ao",
     gender: "Male",
     affiliations: [
       "Kiri"
@@ -3477,8 +3477,8 @@ const db = [
     ],
   },
   {
-    championId: 98,
-    championName: "Koharu Utatane",
+    playerId: 98,
+    playerName: "Koharu Utatane",
     gender: "Female",
     affiliations: [
       "Konoha"
@@ -3509,8 +3509,8 @@ const db = [
     ],
   },
   {
-    championId: 99,
-    championName: "Mifune",
+    playerId: 99,
+    playerName: "Mifune",
     gender: "Male",
     affiliations: [
       "Land of Iron"
@@ -3541,8 +3541,8 @@ const db = [
     ],
   },
   {
-    championId: 100,
-    championName: "Kurenai Yuhi",
+    playerId: 100,
+    playerName: "Kurenai Yuhi",
     gender: "Female",
     affiliations: [
       "Konoha"
@@ -3573,8 +3573,8 @@ const db = [
     ],
   },
   {
-    championId: 101,
-    championName: "Inoichi Yamanaka",
+    playerId: 101,
+    playerName: "Inoichi Yamanaka",
     gender: "Male",
     affiliations: [
       "Konoha"
@@ -3605,8 +3605,8 @@ const db = [
     ],
   },
   {
-    championId: 102,
-    championName: "Jugo",
+    playerId: 102,
+    playerName: "Jugo",
     gender: "Male",
     affiliations: [
       "Oto",
@@ -3640,8 +3640,8 @@ const db = [
     ],
   },
   {
-    championId: 103,
-    championName: "A (Fourth Raikage)",
+    playerId: 103,
+    playerName: "A (Fourth Raikage)",
     gender: "Male",
     affiliations: [
       "Kumo"
@@ -3675,8 +3675,8 @@ const db = [
     ],
   },
   {
-    championId: 104,
-    championName: "Onoki",
+    playerId: 104,
+    playerName: "Onoki",
     gender: "Male",
     affiliations: [
       "Iwa"
