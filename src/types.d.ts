@@ -34,6 +34,7 @@ declare interface GameState {
   attempts: number;
   gameState: 'playing' | 'won' | 'lost';
   lastPlayed: string;
+  dailySeed: string;
 }
 
 declare interface CompareResult {

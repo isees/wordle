@@ -1,13 +1,14 @@
 import { getCharacterById } from '@/data/onepiece/characters';
 import { Character } from '@/types';
-import { useEffect, useState, useRef } from 'react';
-import { useDailyCharacter } from '../lib/daily-character';
+import localforage from 'localforage';
+import { useEffect, useRef, useState } from 'react';
+import { getDailySeed, useDailyCharacter } from '../lib/daily-character';
 import { GameRecord, loadGameHistory, loadGameState, saveGameRecord, saveGameState } from '../lib/storage';
 import { getOrCreateUserId } from '../lib/user';
 import Autocomplete from './Autocomplete';
-import { VictoryBanner } from './VictoryBanner';
 import GuessGrid from './GuessGrid';
 import { UserHistory } from './UserHistory';
+import { VictoryBanner } from './VictoryBanner';
 
 // 游戏主界面
 const GameBoard = () => {
@@ -61,25 +62,36 @@ const GameBoard = () => {
     const loadPersistedState = async () => {
       setIsLoading(true);
       const saved = await loadGameState();
-      if (saved) {
+      const currentSeed = getDailySeed();
+
+      if (saved?.version === 2 && saved.dailySeed === currentSeed) {
         const validGuesses = saved.guessedIds
-          .map(id => getCharacterById(id))
-          .filter((c): c is Character => !!c);
+          .map(getCharacterById)
+          .filter(Boolean) as Character[];
 
         setGuesses(validGuesses);
-        checkVictoryState(validGuesses);
+        setIsWon(saved.gameState === 'won');
+
+        // Force UI update after state load
+        setTimeout(() => {
+          if (saved.gameState === 'won') {
+            victoryBannerRef.current?.scrollIntoView({ behavior: 'auto' });
+          }
+        }, 50);
+      } else {
+        await localforage.removeItem('gameState');
+        setGuesses([]);
+        setIsWon(false);
       }
       setIsLoading(false);
     };
-
     loadPersistedState();
-  }, [targetCharacter.playerId]);
+  }, []);
 
   const handleGuess = (character: Character) => {
     const newGuesses = [...guesses, character];
     setGuesses(newGuesses);
 
-    // Check if any guess matches target
     const hasWon = newGuesses.some(guess =>
       guess.playerId === targetCharacter.playerId
     );
@@ -89,7 +101,8 @@ const GameBoard = () => {
       attempts: newGuesses.length,
       gameState: hasWon ? 'won' : 'playing',
       lastPlayed: new Date().toISOString(),
-      version: 1,
+      dailySeed: getDailySeed(),
+      version: 2
     });
 
     if (hasWon) {
@@ -144,10 +157,10 @@ const GameBoard = () => {
           <div className="loading-section">Loading...</div>
         ) : (
           <div className="guessgrid-section">
-            <GuessGrid
-              guesses={guesses}
-              target={targetCharacter}
-            />
+              <GuessGrid
+                guesses={guesses}
+                target={targetCharacter}
+              />
           </div>
         )}
       </div>

@@ -1,5 +1,9 @@
 import arcs from "@/data/onepiece/arcs";
 import { Character } from "@/types";
+import { cn } from "@/lib/utils";
+
+// Add type definition at the top of the file
+type Status = 'correct' | 'present' | 'absent';
 
 interface ComparisonRowProps {
   guessed: Character;
@@ -43,16 +47,23 @@ const getHakiStatus = (guessed: string[], solution: string[]) => {
   return hasCommon ? 'present' : 'absent';
 };
 
-const AttributeCell = ({ status, value }: { status: 'correct' | 'present' | 'absent'; value: string }) => {
-  const bgColor = {
-    correct: 'bg-green-500',
-    present: 'bg-yellow-500',
-    absent: 'bg-gray-200',
-  }[status];
+// Update statusColors definition
+const statusColors: Record<Status, string> = {
+  correct: 'bg-green-500',
+  present: 'bg-yellow-500',
+  absent: 'bg-gray-200',
+};
 
+const AttributeCell = ({ status, value }: { status: Status; value: string }) => {
   return (
-    <div className={`p-2 ${bgColor} rounded text-sm font-medium text-gray-900`}>
-      {value || '-'}
+    <div className={cn(
+      "aspect-square flex items-center justify-center p-1",
+      "w-[4rem] min-w-[3rem]", // Fixed dimensions
+      statusColors[status]
+    )}>
+      <span className="text-xs leading-tight line-clamp-2">
+        {value}
+      </span>
     </div>
   );
 };
@@ -87,7 +98,7 @@ const CharacterRow = ({ guessed, solution }: ComparisonRowProps) => {
   const isBountyMatch = guessedBounty === solutionBounty;
 
   return (
-    <div className="grid grid-cols-9 gap-1">
+    <div className="grid grid-cols-9 gap-1 w-full min-w-[600px]">
       <AttributeCell
         status={guessed.playerName === solution.playerName ||
           solution.alias.includes(guessed.playerName) ? 'correct' : 'absent'}

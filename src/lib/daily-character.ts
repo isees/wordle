@@ -32,3 +32,8 @@ export const useDailyCharacter = () => {
   }
   return characters[id];
 };
+
+export const getDailySeed = () => {
+  const now = new Date();
+  return `${now.getUTCFullYear()}-${now.getUTCMonth()}-${now.getUTCDate()}`;
+};
