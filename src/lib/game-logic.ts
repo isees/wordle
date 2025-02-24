@@ -6,7 +6,7 @@ export const compareAttributes = (guess: Character, target: Character): CompareR
   return {
     gender: guess.gender === target.gender,
     affiliation: guess.affiliation === target.affiliation,
-    devilFruit: guess.devilFruitName === target.devilFruitName,
+    devilFruit: guess.devilFruitType === target.devilFruitType,
     haki: getHakiStatus(guess.haki, target.haki),
     bounty: {
       value: guess.bounty,

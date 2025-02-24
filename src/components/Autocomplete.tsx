@@ -160,7 +160,7 @@ export const Autocomplete = ({ onSelect, selectedCharacters }: AutocompleteProps
                   <div className="font-medium">{character.playerName}</div>
                   {character.alias.length > 0 && (
                     <div className="text-sm text-gray-500 truncate">
-                      别名：{character.alias.join(', ')}
+                      {character.alias.join(', ')}
                     </div>
                   )}
                 </div>

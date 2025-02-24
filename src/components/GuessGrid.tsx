@@ -16,10 +16,6 @@ const statusColors = {
   absent: "bg-gray-200 text-black",
 };
 
-const getArcName = (chapter: number) => {
-  return arcs.find(arc => chapter >= arc.from && chapter <= arc.to)?.value || 'Unknown';
-};
-
 const formatCompactBounty = (bounty: number) => {
   if (bounty >= 1e9) return `${Math.floor(bounty / 1e9)}B`;
   if (bounty >= 1e6) return `${Math.floor(bounty / 1e6)}M`;
@@ -41,13 +37,13 @@ export const GuessGrid = ({ guesses, target }: GuessGridProps) => {
   };
 
   return (
-    <div className="overflow-x-auto rounded-lg border shadow-sm">
+    <div className="rounded-lg border shadow-sm border-gray-300">
       {/* Table Header */}
-      <div className="grid grid-cols-8 gap-2 p-2 bg-muted/50">
+      <div className="grid grid-cols-8 gap-1 p-1 bg-muted/50">
         {headers.map((header, index) => (
           <div
             key={index}
-            className="text-sm font-medium text-center p-2 text-foreground"
+            className="grid-header"
           >
             {header}
           </div>
@@ -68,7 +64,10 @@ export const GuessGrid = ({ guesses, target }: GuessGridProps) => {
               {/* Character Card */}
               <Tooltip>
                 <TooltipTrigger>
-                  <Card className="aspect-square flex items-center justify-center overflow-hidden">
+                  <Card className={cn(
+                    "baseCardStyles",
+                    "overflow-hidden"
+                  )}>
                     <img
                       src={avatarUrl}
                       alt={guess.playerName}
@@ -88,85 +87,88 @@ export const GuessGrid = ({ guesses, target }: GuessGridProps) => {
 
               {/* Gender */}
               <Card className={cn(
-                "aspect-square flex items-center justify-center p-1",
+                "baseCardStyles",
                 statusColors[comparison.gender ? "correct" : "absent"]
               )}>
-                <span className="text-xs md:text-sm text-center">
+                <span className="card-content">
                   {guess.gender}
                 </span>
               </Card>
 
               {/* Affiliation */}
               <Card className={cn(
-                "aspect-square flex items-center justify-center p-1",
+                "baseCardStyles",
                 statusColors[comparison.affiliation ? "correct" : "absent"]
               )}>
-                <span className="text-xs md:text-sm text-center">
+                <span className="card-content">
                   {guess.affiliation}
                 </span>
               </Card>
 
               {/* Devil Fruit */}
               <Card className={cn(
-                "aspect-square flex items-center justify-center p-1",
+                "baseCardStyles",
                 statusColors[comparison.devilFruit ? "correct" : "absent"]
               )}>
-                <span className="text-xs md:text-sm text-center">
-                  {guess.devilFruitName || 'None'}
+                <span className={cn(
+                  "card-content",
+                  { "text-xs": guess.devilFruitType.length > 8 }
+                )}>
+                  {guess.devilFruitType || 'None'}
                 </span>
               </Card>
 
               {/* Haki */}
               <Card className={cn(
-                "aspect-square flex items-center justify-center p-1",
+                "baseCardStyles",
                 statusColors[comparison.haki]
               )}>
-                <span className="text-xs md:text-sm text-center">
+                <span className={cn(
+                  "card-content",
+                  { "text-xs": guess.haki.join(', ').length > 8 }
+                )}>
                   {guess.haki.join(', ') || 'None'}
                 </span>
               </Card>
 
               {/* Bounty */}
               <Card className={cn(
-                "aspect-square flex flex-col items-center justify-center p-1",
-                statusColors[comparison.bounty.relation === "equal" ? "correct" : "absent"]
+                "baseCardStyles",
+                statusColors[comparison.bounty.relation === "equal" ? "correct" : "absent"],
+                comparison.bounty.relation === "higher" ? "guess-down" :
+                  comparison.bounty.relation === "lower" ? "guess-up" : ""
               )}>
-                <span className="font-medium text-sm">
-                  ฿{formatCompactBounty(guess.bounty)}
-                </span>
-                <span className="text-xs mt-0.5">
-                  {comparison.bounty.relation === "higher" ? "↓" :
-                    comparison.bounty.relation === "lower" ? "↑" : ""}
+                <span className="font-medium text-sm flex items-center gap-1">
+                  <i className="beli-icon" />
+                  {formatCompactBounty(guess.bounty)}
                 </span>
               </Card>
 
               {/* Height */}
               <Card className={cn(
-                "aspect-square flex flex-col items-center justify-center p-1",
-                statusColors[comparison.height.relation === "equal" ? "correct" : "absent"]
+                "baseCardStyles",
+                statusColors[comparison.height.relation === "equal" ? "correct" : "absent"],
+                comparison.height.relation === "higher" ? "guess-down" :
+                  comparison.height.relation === "lower" ? "guess-up" : ""
               )}>
                 <span className="font-medium text-sm">
                   {guess.height}cm
-                </span>
-                <span className="text-xs mt-0.5">
-                  {comparison.height.relation === "higher" ? "↓" :
-                    comparison.height.relation === "lower" ? "↑" : ""}
                 </span>
               </Card>
 
               {/* Debut Arc */}
               <Card className={cn(
-                "aspect-square flex flex-col items-center justify-center p-1",
-                statusColors[comparison.arc.relation === 'equal' ? 'correct' : 'absent']
+                "baseCardStyles",
+                statusColors[comparison.arc.relation === 'equal' ? 'correct' : 'absent'],
+                comparison.arc.relation === 'higher' ? 'guess-down' :
+                  comparison.arc.relation === 'lower' ? 'guess-up' : ''
               )}>
-                <span className="font-medium text-sm text-center">
+                <span className={cn(
+                  "card-content",
+                  { "text-xs": comparison.arc.value.length > 18 }
+                )}>
                   {comparison.arc.value}
                 </span>
-                {comparison.arc.relation !== 'equal' && (
-                  <span className="text-xs mt-0.5">
-                    {comparison.arc.relation === 'higher' ? '↑' : '↓'}
-                  </span>
-                )}
               </Card>
             </div>
           );

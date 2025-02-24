@@ -106,7 +106,7 @@ const CharacterRow = ({ guessed, solution }: ComparisonRowProps) => {
       />
       <AttributeCell status={isMatch('gender') ? 'correct' : 'absent'} value={guessed.gender} />
       <AttributeCell status={isMatch('affiliation') ? 'correct' : 'absent'} value={guessed.affiliation} />
-      <AttributeCell status={isMatch('devilFruitName') ? 'correct' : 'absent'} value={guessed.devilFruitName} />
+      <AttributeCell status={isMatch('devilFruitType') ? 'correct' : 'absent'} value={guessed.devilFruitType} />
       <AttributeCell status={getHakiStatus(guessed.haki, solution.haki) === 'correct' ? 'correct' : getHakiStatus(guessed.haki, solution.haki) === 'present' ? 'present' : 'absent'} value={guessed.haki.join(', ')} />
       <AttributeCell
         status={isBountyMatch ? 'correct' : 'absent'}
@@ -146,7 +146,7 @@ const AttributeRow = ({ label, value }: Props) => {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-4 py-2 border-b">
+    <div className="grid grid-cols-3 py-2 border-b">
       <span className="font-medium text-gray-600">{label}</span>
       <span className="col-span-2 text-gray-800">
         {label === 'Arc' && typeof value === 'number'

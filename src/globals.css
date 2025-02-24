@@ -30,4 +30,73 @@
 .autocomplete-container {
   position: relative;
   z-index: 50;
-} 
+}
+
+.guess-up,
+.guess-down {
+  position: relative;
+}
+
+.guess-up::after,
+.guess-down::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.2;
+  background: black;
+}
+
+/* 向上箭头 */
+.guess-up::after {
+  clip-path: polygon(50% 20%, 20% 80%, 80% 80%);
+}
+
+/* 向下箭头 */
+.guess-down::after {
+  clip-path: polygon(20% 20%, 80% 20%, 50% 80%);
+}
+
+/* 确保文字在箭头上层 */
+.guess-up span,
+.guess-down span {
+  position: relative;
+  z-index: 2;
+}
+
+.beli-icon {
+  display: inline-block;
+  width: 12px;
+  height: 20px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAUAQMAAACDPk5SAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURQAAAP8AABv/jSIAAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAADJJREFUCNdj+GfA8BeIPoBQQwHDAQOGpxNA6IEBwwMBhqcHoKgBpgaIPn5g+PyB4f8HAEi+Hhmi1AARAAAAAElFTkSuQmCC);
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+
+.card-content {
+  @apply w-full h-full;
+  @apply flex items-center justify-center text-center;
+  @apply text-base sm:text-sm md:text-base;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.baseCardStyles {
+  @apply flex items-center justify-center aspect-square line-clamp-2 border-gray-300;
+}
+
+.grid-header {
+  @apply text-sm font-medium text-center text-foreground underline underline-offset-8;
+}
+
+.victory-content{
+  @apply flex flex-col items-center justify-center;
+}
+
+.victory-banner{
+  @apply md:min-w-[480px] sm:min-w-[320px];
+}

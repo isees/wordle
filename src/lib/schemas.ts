@@ -8,7 +8,7 @@ export const CharacterSchema = z.object({
   epithet: z.array(z.string()).default([]),
   gender: z.string().default('Unknown'),
   affiliation: z.string().default('Unknown'),
-  devilFruitName: z.string().default('None'),
+  devilFruitType: z.string().default('None'),
   haki: z.array(z.string()).default([]),
   bounty: z.number().default(0),
   height: z.number().default(0),

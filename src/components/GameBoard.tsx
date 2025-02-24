@@ -166,7 +166,7 @@ const GameBoard = () => {
       </div>
 
       {isWon && (
-        <div ref={victoryBannerRef}>
+        <div ref={victoryBannerRef} className="victory-content">
           <VictoryBanner
             targetCharacter={targetCharacter}
             attempts={guesses.length}
