@@ -127,3 +127,7 @@
 .victory-banner{
   @apply md:min-w-[480px] sm:min-w-[320px];
 }
+
+.tip{
+  @apply text-xs bg-black/80 p-1 rounded-lg z-50 text-white border-none;
+}

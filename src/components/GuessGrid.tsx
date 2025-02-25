@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import arcs from "@/data/onepiece/arcs";
 import { cn } from "@/lib/utils";
 import { Character, CompareResult } from "@/types";
 import { compareAttributes } from '../lib/game-logic';
@@ -54,7 +53,7 @@ export const GuessGrid = ({ guesses, target }: GuessGridProps) => {
       <div className="space-y-2 p-2">
         {reversedGuesses.map((guess, index) => {
           const comparison = getComparison(guess);
-          const avatarUrl = `./characters/${guess.playerId}.jpg`;
+          const avatarUrl = `./images/avatar/${guess.playerId}.png`;
 
           return (
             <div
@@ -66,22 +65,25 @@ export const GuessGrid = ({ guesses, target }: GuessGridProps) => {
                 <TooltipTrigger>
                   <Card className={cn(
                     "baseCardStyles",
+                    "relative",
                     "overflow-hidden"
                   )}>
                     <img
                       src={avatarUrl}
                       alt={guess.playerName}
-                      className="object-cover w-full h-full"
+                      className="object-cover object-top w-full h-full"
                     />
                   </Card>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>{guess.playerName}</p>
-                  {guess.alias.length > 0 && (
-                    <p className="text-muted-foreground text-xs">
-                      AKA: {guess.alias.join(', ')}
-                    </p>
-                  )}
+                  <div className="flex flex-col items-start justify-center tip">
+                    <p className="text-sm font-bold">{guess.playerName}</p>
+                    {guess.alias.length > 0 && (
+                      <p className="text-xs">
+                        {guess.alias.join(', ')}
+                      </p>
+                    )}
+                  </div>
                 </TooltipContent>
               </Tooltip>
 
@@ -128,11 +130,11 @@ export const GuessGrid = ({ guesses, target }: GuessGridProps) => {
                     guess.haki.length === 0 || guess.haki[0] === "None" ? "None" :
                       guess.haki.map((haki) => {
                         return <Tooltip>
-                          <TooltipTrigger asChild>
+                          <TooltipTrigger>
                             <i className={`${haki.toLowerCase()}-haki haki-icon`} />
                           </TooltipTrigger>
                           <TooltipContent side="top">
-                            <p className="text-xs bg-black text-white p-1 rounded-md">{haki}</p>
+                            <p className="tip">{haki}</p>
                           </TooltipContent>
                         </Tooltip>
                       })
