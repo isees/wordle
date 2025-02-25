@@ -123,11 +123,20 @@ export const GuessGrid = ({ guesses, target }: GuessGridProps) => {
                 "baseCardStyles",
                 statusColors[comparison.haki]
               )}>
-                <span className={cn(
-                  "card-content",
-                  { "text-xs": guess.haki.join(', ').length > 8 }
-                )}>
-                  {guess.haki.join(', ') || 'None'}
+                <span className={cn("haki-content")}>
+                  {
+                    guess.haki.length === 0 || guess.haki[0] === "None" ? "None" :
+                      guess.haki.map((haki) => {
+                        return <Tooltip>
+                          <TooltipTrigger asChild>
+                            <i className={`${haki.toLowerCase()}-haki haki-icon`} />
+                          </TooltipTrigger>
+                          <TooltipContent side="top">
+                            <p className="text-xs bg-black text-white p-1 rounded-md">{haki}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      })
+                  }
                 </span>
               </Card>
 

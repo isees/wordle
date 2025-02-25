@@ -54,5 +54,5 @@ const getArcName = (chapter: number) => {
 const getArcRelation = (chapter: number, targetChapter: number) => {
   const guessedArc = getArcName(chapter);
   const solutionArc = getArcName(targetChapter);
-  return guessedArc === solutionArc ? 'equal' : guessedArc < solutionArc ? 'lower' : 'higher';
+  return guessedArc === solutionArc ? 'equal' : guessedArc < solutionArc ? 'higher' : 'lower';
 };
