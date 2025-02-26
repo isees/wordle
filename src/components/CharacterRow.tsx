@@ -69,7 +69,7 @@ const AttributeCell = ({ status, value }: { status: Status; value: string }) => 
 };
 
 const normalizeBounty = (bounty: number) => {
-  // 统一转换为百万单位比较
+  // convert to million unit for comparison
   return Math.round(bounty / 1e6);
 };
 

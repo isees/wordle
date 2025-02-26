@@ -3,17 +3,17 @@ import { Character } from '@/types';
 import localforage from 'localforage';
 import { useEffect, useRef, useState } from 'react';
 import { getDailySeed, useDailyCharacter } from '../lib/daily-character';
-import { GameRecord, loadGameHistory, loadGameState, saveGameRecord, saveGameState } from '../lib/storage';
+import { loadGameState, saveGameRecord, saveGameState } from '../lib/storage';
 import { getOrCreateUserId } from '../lib/user';
 import Autocomplete from './Autocomplete';
+import ColorIndicator from './ColorIndicator';
+import GamePanel from './GamePanel';
 import GuessGrid from './GuessGrid';
-import { UserHistory } from './UserHistory';
 import { VictoryBanner } from './VictoryBanner';
 
-// 游戏主界面
+// Main Game Board
 const GameBoard = () => {
   const [userId] = useState(getOrCreateUserId());
-  const [gameHistory, setGameHistory] = useState<GameRecord[]>([]);
   const [guesses, setGuesses] = useState<Character[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isWon, setIsWon] = useState(false);
@@ -34,30 +34,10 @@ const GameBoard = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const loadHistory = async () => {
-      const history = await loadGameHistory(userId);
-      setGameHistory(history);
-    };
-    loadHistory();
-  }, [userId]);
 
   const targetCharacter = useDailyCharacter();
-  const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
 
   useEffect(() => {
-    const checkVictoryState = (guesses: Character[]) => {
-      const hasWon = guesses.some(guess =>
-        guess.playerId === targetCharacter.playerId
-      );
-      setIsWon(hasWon);
-
-      if (hasWon) {
-        setTimeout(() => {
-          victoryBannerRef.current?.scrollIntoView({ behavior: 'smooth' });
-        }, 300);
-      }
-    };
 
     const loadPersistedState = async () => {
       setIsLoading(true);
@@ -117,10 +97,6 @@ const GameBoard = () => {
     }
   };
 
-  useEffect(() => {
-    setSelectedCharacter(targetCharacter); // 测试用
-  }, [targetCharacter]);
-
   // Add useEffect for initial scroll check
   useEffect(() => {
     const checkWinState = async () => {
@@ -140,39 +116,66 @@ const GameBoard = () => {
   }, []);
 
   return (
-    <div className="game-container">
-      <UserHistory userId={userId} />
+    <div className="container mx-auto px-4 pb-16 flex flex-col items-center">
+      {/* <UserHistory userId={userId} /> */}
+      <div className="flex op-logo" />
 
-      <div className="main-content">
-        {!isWon && (
-          <div className="autocomplete-section mb-8">
-            <Autocomplete
-              onSelect={handleGuess}
-              selectedCharacters={guesses}
-            />
+      {isLoading ? (
+        <div className="loading-section flex items-center justify-center">
+          <div className="loading-dots">
+            <span>.</span><span>.</span><span>.</span>
           </div>
-        )}
+        </div>
+      ) : (
+          <div className="main-content">
+            <div className="game-panel flex flex-col justify-center items-center w-full gap-4 mt-4">
+              <div className="border-container">
+                {isWon ? (
+                  <div ref={victoryBannerRef} className="victory-content">
+                    <VictoryBanner
+                      targetCharacter={targetCharacter}
+                      attempts={guesses.length}
+                    />
+                  </div>
+                ) : (
+                  <GamePanel guesses={guesses} />
+                )}
+              </div>
+            </div>
 
-        {isLoading ? (
-          <div className="loading-section">Loading...</div>
-        ) : (
+            {!isWon && (
+              <div className="autocomplete-section">
+                <Autocomplete
+                  onSelect={handleGuess}
+                  selectedCharacters={guesses}
+                />
+              </div>
+            )}
+
           <div className="guessgrid-section">
               <GuessGrid
                 guesses={guesses}
                 target={targetCharacter}
               />
           </div>
-        )}
-      </div>
 
-      {isWon && (
-        <div ref={victoryBannerRef} className="victory-content">
-          <VictoryBanner
-            targetCharacter={targetCharacter}
-            attempts={guesses.length}
-          />
+            {!isWon && guesses.length > 0 && (
+              <ColorIndicator guesses={guesses} />
+            )}
         </div>
       )}
+
+      {/* Privacy Policy Footer */}
+      <footer className="mt-16 mb-4 text-center text-sm text-gray-600 font-bold">
+        <a
+          href="/privacy-policy.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-gray-700 hover:underline"
+        >
+          Privacy Policy
+        </a>
+      </footer>
     </div>
   );
 };

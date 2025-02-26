@@ -17,19 +17,6 @@ const fuseOptions = {
   includeMatches: true
 };
 
-// 添加悬赏金格式化函数
-const formatCompactBounty = (bounty: number) => {
-  if (bounty >= 1e9) {
-    return `${Math.floor(bounty / 1e9)}B`;
-  }
-  if (bounty >= 1e6) {
-    const millions = Math.floor(bounty / 1e6);
-    const remainder = Math.floor((bounty % 1e6) / 1e4);
-    return remainder > 0 ? `${millions}M${remainder}` : `${millions}M`;
-  }
-  return bounty.toLocaleString();
-};
-
 export const Autocomplete = ({ onSelect, selectedCharacters }: AutocompleteProps) => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Character[]>([]);
@@ -64,7 +51,7 @@ export const Autocomplete = ({ onSelect, selectedCharacters }: AutocompleteProps
     }
   };
 
-  // 添加点击外部关闭逻辑
+  // click outside to close
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
@@ -118,11 +105,40 @@ export const Autocomplete = ({ onSelect, selectedCharacters }: AutocompleteProps
     }
   }, [selectedIndex]);
 
+  const SuggestionItem = ({ character }: { character: Character }) => {
+    const avatarUrl = `./images/avatar/${character.playerId}.png`;
+
+    return (
+      <div className="flex items-center gap-2 hover:bg-gray-100 cursor-pointer rounded">
+        {/* Character avatar */}
+        <div className="flex-shrink-0 max-w-10 max-h-10 rounded-xl overflow-hidden">
+          <img
+            src={avatarUrl}
+            alt={character.playerName}
+            className="w-full h-full object-cover object-top"
+            onError={(e) => {
+              // Fallback if image fails to load
+              (e.target as HTMLImageElement).src = './images/avatar/placeholder.png';
+            }}
+          />
+        </div>
+
+        {/* Character name and info */}
+        <div className="flex-grow">
+          <div className="font-medium">{character.playerName}</div>
+          {character.alias.length > 0 && (
+            <div className="text-xs text-gray-500">{character.alias.join(', ')}</div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div className="autocomplete-container relative mb-8">
-      <div className="relative">
+    <div className="autocomplete-container border-container ">
+      <div className="relative w-full bg-white rounded-xl border-2 border-gray-200 p-1">
         <Input
-          className="pl-4 pr-12 h-12 rounded-full shadow-sm border-2 border-gray-200 hover:border-gray-300 focus-visible:ring-emerald-500"
+          className="pl-4 pr-12 h-12 shadow-sm border-none text-gray-500 font-bold"
           value={query}
           onChange={(e) => {
             setQuery(e.target.value)
@@ -131,7 +147,7 @@ export const Autocomplete = ({ onSelect, selectedCharacters }: AutocompleteProps
             }
           }}
           onKeyDown={handleKeyDown}
-          placeholder="Search characters..."
+          placeholder="Character name, alias, epithet..."
           ref={inputRef}
         />
         <button
@@ -143,13 +159,13 @@ export const Autocomplete = ({ onSelect, selectedCharacters }: AutocompleteProps
       </div>
 
       {isOpen && results.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 z-50">
-          <div className="bg-white border border-gray-200 rounded-md shadow-lg overflow-hidden">
-            <div className="max-h-60 overflow-y-auto" ref={resultsRef}>
+        <div className="absolute top-full left-0 right-0 mt-1 z-50">
+          <div className="rounded-md shadow-lg overflow-hidden  border-none">
+            <div className="bg-white max-h-60 overflow-y-auto border-solid border-8 border-gray-200 rounded-xl" ref={resultsRef}>
               {results.map((character, index) => (
                 <div
                   key={character.playerId}
-                  className={`p-2 hover:bg-gray-100 cursor-pointer ${selectedIndex === index ? 'bg-blue-50' : ''
+                  className={`p-2 hover:bg-gray-100 cursor-pointer ${selectedIndex === index ? 'bg-blue-400' : ''
                     }`}
                   onClick={() => {
                     onSelect(character);
@@ -157,12 +173,7 @@ export const Autocomplete = ({ onSelect, selectedCharacters }: AutocompleteProps
                     setQuery('');
                   }}
                 >
-                  <div className="font-medium">{character.playerName}</div>
-                  {character.alias.length > 0 && (
-                    <div className="text-sm text-gray-500 truncate">
-                      {character.alias.join(', ')}
-                    </div>
-                  )}
+                  <SuggestionItem character={character} />
                 </div>
               ))}
             </div>

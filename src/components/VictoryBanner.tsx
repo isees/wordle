@@ -40,34 +40,16 @@ export const VictoryBanner = ({ targetCharacter, attempts }: VictoryBannerProps)
   };
 
   return (
-    <section className="victory-banner mt-8 p-6 bg-emerald-50 rounded-xl border border-emerald-200">
-      <h2 className="text-2xl font-bold text-emerald-800 mb-4">Congratulations! 🎉</h2>
-
-      <div className="flex items-center gap-6">
-        <img
-          src={`/characters/${targetCharacter.playerId}.jpg`}
-          alt={targetCharacter.playerName}
-          className="w-24 h-24 rounded-full object-cover border-4 border-emerald-200"
-        />
-
-        <div className="space-y-2">
-          <p className="text-lg font-semibold text-emerald-700">
-            {targetCharacter.playerName}
-          </p>
-          <p className="text-sm text-emerald-600">
-            Guessed in {attempts} {attempts === 1 ? 'attempt' : 'attempts'}
-          </p>
-        </div>
-      </div>
-
+    <section className="victory-banner p-6 bg-white rounded-xl flex flex-col justify-center items-center">
+      <h2 className="md:text-3xl text-2xl font-bold text-red-500 text-center">Congratulations! 🎉</h2>
       <div className="mt-6 text-center">
-        <p className="text-sm text-emerald-600 mb-1">
+        <p className="md:text-xl text-sm text-gray-500 font-bold">
           Next character available in
         </p>
-        <div className="text-3xl font-bold text-emerald-800 font-mono">
+        <div className="md:text-5xl text-3xl font-bold text-gray-700 font-mono mt-2">
           {formatTime(timeLeft)}
         </div>
-        <p className="mt-2 text-xs text-emerald-500">
+        <p className="mt-2 md:text-sm text-gray-500 font-bold">
           UTC+00:00
         </p>
       </div>
