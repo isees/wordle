@@ -55,8 +55,7 @@ export const GuessGrid = ({ guesses, target }: GuessGridProps) => {
             const avatarUrl = `./images/avatar/${guess.playerId}.png`;
 
             return (
-              <div
-                key={index}
+              <div key={guesses.length - index - 1}
                 className="grid grid-cols-8 gap-2 items-center"
               >
                 {/* Character Card */}

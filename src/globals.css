@@ -67,7 +67,6 @@ body {
 .beli-icon {
   @apply h-4 w-3;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAUCAYAAAC58NwRAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAABxSURBVDhPvdFLDoAwCARQ6v3vrAzpNLMApSb6NiJaPumwG6eboQ2H5xFvCfzMn1q0uio7VKJlVY10tBXsHFpwCBhH0kXSIX63A7FKhiO1O6TFkATGkZzig9ve4ZuLg/QeVFXkpx2UjpLNXXZ4XLLH7AIgHE/p1FqccwAAAABJRU5ErkJggg==);
-  background-image: url(./images/beli-w.png);
   background-size: contain;
   background-repeat: no-repeat;
 }
